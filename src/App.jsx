@@ -1,11 +1,11 @@
 import { GlobalStyle } from "./GlobalStyle";
-import PokemonsListPage from "./Pages/PokemonsListPage/PokemonsListPage";
+import Router from "./Router/Router";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <PokemonsListPage/>
+      <Router/>
     </>
   );
 }

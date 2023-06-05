@@ -1,16 +1,50 @@
-import { ImageLogo, Nav, ButtonAllPokemons, ButtonPokedex } from "./HeaderStyle";
+import { useLocation, useNavigate } from "react-router-dom";
+import { goToHome, goToPokeDex } from "../../Router/coordinator"
+import { ButtonPokedex, Nav, ButtonAllPokemons, ButtonDeletePokemon } from "./HeaderStyle";
 
 function Header() {
-  return (
-    <Nav>
-      <ButtonAllPokemons>
-        <img src="../src/assets/Vector.png" alt="setinha" />
-        <u>Todos Pokémons</u>
-      </ButtonAllPokemons>
-      <ImageLogo src="../src/assets/logo.png" alt="logo" />
-      <ButtonPokedex>Pokédex</ButtonPokedex>
-    </Nav>
-  );
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  const renderHeader = () => {
+    switch (location.pathname) {
+      case "/":
+        return (
+          <Nav>
+            <div>
+              <img src="../src/assets/logo.png" alt="logo" />
+            </div>
+            <ButtonPokedex onClick={() => {goToPokeDex(navigate)}}>Pokédex</ButtonPokedex>
+          </Nav>
+        );
+
+      case "/pokedex":
+        return (
+          <Nav>
+            <ButtonAllPokemons onClick={() => {goToHome(navigate)}}>
+              {"<"}<u>Todos Pokémons</u>
+            </ButtonAllPokemons>
+            <div>
+              <img src="../src/assets/logo.png" alt="logo" />
+            </div>
+          </Nav>
+        );
+
+      case "/detalhes":
+        return (
+          <Nav>
+            <ButtonAllPokemons onClick={() => {goToHome(navigate)}}>
+            {"<"}<b>Todos Pokémons</b>
+            </ButtonAllPokemons>
+            <div>
+              <img src="../src/assets/logo.png" alt="logo" />
+            </div>
+            <ButtonDeletePokemon>Excluir da Pokédex</ButtonDeletePokemon>
+          </Nav>
+        );
+    }
+  };
+  return <>{renderHeader()}</>;
 }
 
 export default Header;
