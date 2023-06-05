@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ContainerCard = styled.div`
     padding: 1rem;
     width: 27rem;
+    height: 13rem;
     border-radius: 0.75rem;
     display: flex;
     position: relative;
@@ -20,7 +21,6 @@ export const ImagePokemon = styled.img`
     right: 0;
     z-index: 2;
 `
-
 export const ButtonCapturar = styled.button`
     width: 9.12rem;
     height: 2.3rem;
