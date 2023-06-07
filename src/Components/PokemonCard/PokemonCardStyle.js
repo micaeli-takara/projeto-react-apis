@@ -19,6 +19,7 @@ export const ImagePokemon = styled.img`
     position: absolute;
     top: -3.75rem;
     right: 0;
+    width: 12rem;
     z-index: 2;
 `
 export const ButtonCapturar = styled.button`

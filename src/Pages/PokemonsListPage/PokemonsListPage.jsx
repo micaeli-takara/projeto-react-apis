@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import PokemonCard from "../../Components/PokemonCard/PokemonCard";
 import {
   ContainerHome,
@@ -6,17 +7,21 @@ import {
 } from "./PokemonsListPageStyle";
 
 function PokemonsListPage() {
+
+  const [countPokemon, setCountPokemon ] = useState([])
+
+  useEffect(() => {
+    setCountPokemon(["1","2","3"])
+ 
+	}, [])
+
+
   return (
     <>
       <ContainerHome>
         <TituloAllPokemons>Todos Pokémons</TituloAllPokemons>
         <ContainerListCard>
-          <PokemonCard />
-          <PokemonCard />
-          <PokemonCard />
-          <PokemonCard />
-          <PokemonCard />
-          <PokemonCard />
+          <PokemonCard numPokemon={1}/>
         </ContainerListCard>
       </ContainerHome>
     </>
