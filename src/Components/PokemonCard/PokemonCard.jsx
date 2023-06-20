@@ -1,64 +1,52 @@
 import { useNavigate } from "react-router-dom";
-import {
-  NamePokemon,
-  PId,
-} from "../../Pages/PokemonDetailPage/PokemonDetailPageStyle";
+import { PId } from "../../Pages/PokemonDetailPage/PokemonDetailPageStyle";
 import {
   ContainerCard,
   ImagePokemon,
-  ImageTipoPokemon,
   ButtonCapturar,
   ImagePokebola,
+  NamePokemonCard,
+  TypesContainer,
+  PokemonType,
+  ButtonDetalhes,
 } from "./PokemonCardStyle";
-import axios from "axios";
-import { BASE_URL } from "../Constants/BASE_URL";
-import { useEffect, useState } from "react";
+import { getTypes } from "../../utils/ReturnPokemonType";
 
-function PokemonCard() {
+function PokemonCard(props) {
   const navigate = useNavigate();
 
   const goToPokeDetail = () => {
     navigate("/detalhes");
   };
 
-  const [pokemon, setPokemon] = useState({});
+  const typePokemonsCard = props.pokemon.types.map((type, index) => {
+    return <PokemonType key={index} src={getTypes(type.type.name)} alt="" />;
+  });
 
-  useEffect(() => {
-    getPokemons();
-  }, []);
-
-  const getPokemons = async () => {
-    const response = await axios.get(`${BASE_URL}/1`);
-    try {
-      (response) => {
-        setPokemon(response.data.json());
-        console.log(response.data)
-      };
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
-    <ContainerCard>
+    <ContainerCard color={props.cardColor}>
       <div>
-        <PId>#{pokemon.id}</PId>
-        <NamePokemon>{pokemon.name}</NamePokemon>
-        <ImageTipoPokemon>
-          <img alt="coisinha" />
-        </ImageTipoPokemon>
-        <button
+        <PId>{`#0${props.pokemon.id}`}</PId>
+        <NamePokemonCard>
+          {" "}
+          {props.pokemon.name.charAt(0).toUpperCase() +
+            props.pokemon.name.slice(1)}
+        </NamePokemonCard>
+        <TypesContainer> {typePokemonsCard} </TypesContainer>
+        <ButtonDetalhes
           onClick={() => {
             goToPokeDetail(navigate);
           }}
         >
-          Detalhes
-        </button>
+          {" "}
+          <u>Detalhes</u>{" "}
+        </ButtonDetalhes>
       </div>
       <div>
         <ImagePokemon
-          src={pokemon.sprites?.other["official-artwork"].front_default}
-          alt="pokemon"
+          src={props.pokemon.sprites.other["official-artwork"].front_default}
+          alt="fotinho"
         />
         <ButtonCapturar>Capturar!</ButtonCapturar>
       </div>
