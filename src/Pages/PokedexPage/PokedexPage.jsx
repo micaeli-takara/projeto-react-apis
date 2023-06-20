@@ -1,10 +1,10 @@
-import PokemonCard from "../../Components/PokemonCard/PokemonCard"
+import { ContainerHome, TituloAllPokemons } from "../PokemonsListPage/PokemonsListPageStyle"
 
 function PokedexPage () {
     return(
-        <div>
-            <PokemonCard/>
-        </div>
+        <ContainerHome>
+            <TituloAllPokemons>Meus Pokemons</TituloAllPokemons>
+        </ContainerHome>
     )
 }
 
