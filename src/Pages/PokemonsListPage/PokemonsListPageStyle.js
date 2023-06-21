@@ -6,6 +6,7 @@ export const ContainerHome = styled.div`
 export const TituloAllPokemons = styled.h1`
     color: #FFFFFF;
     font-family: 'Poppins', sans-serif;
+    font-weight: 700;
     font-size: 3rem;
     line-height: 4.5rem;
     padding: 2.25rem 2rem;

@@ -30,7 +30,7 @@ function Header() {
           </Nav>
         );
 
-      case "/detalhes":
+      default:
         return (
           <Nav>
             <ButtonAllPokemons onClick={() => {goToHome(navigate)}}>

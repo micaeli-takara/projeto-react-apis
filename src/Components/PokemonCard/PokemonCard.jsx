@@ -7,48 +7,42 @@ import {
   ImagePokebola,
   NamePokemonCard,
   TypesContainer,
-  PokemonType,
   ButtonDetalhes,
 } from "./PokemonCardStyle";
 import { getTypes } from "../../utils/ReturnPokemonType";
+import { GlobalContext } from "../../contexts/GlobalContext";
+import { useContext } from "react";
 
-function PokemonCard(props) {
+function PokemonCard({ pokemon, cardColor }) {
+  const context = useContext(GlobalContext)
+  const {addToPokedex} = context
+
   const navigate = useNavigate();
 
   const goToPokeDetail = () => {
-    navigate("/detalhes");
+    navigate(`/detalhes/${pokemon.id}`);
   };
 
-  const typePokemonsCard = props.pokemon.types.map((type, index) => {
-    return <PokemonType key={index} src={getTypes(type.type.name)} alt="" />;
+  const typePokemonsCard = pokemon.types.map((type, index) => {
+    return <img key={index} src={getTypes(type.type.name)} alt="" />
   });
 
-
   return (
-    <ContainerCard color={props.cardColor}>
+    <ContainerCard color={cardColor}>
       <div>
-        <PId>{`#0${props.pokemon.id}`}</PId>
-        <NamePokemonCard>
-          {" "}
-          {props.pokemon.name.charAt(0).toUpperCase() +
-            props.pokemon.name.slice(1)}
-        </NamePokemonCard>
+        <PId>{`#0${pokemon.id}`}</PId>
+        <NamePokemonCard>{pokemon.name}</NamePokemonCard>
         <TypesContainer> {typePokemonsCard} </TypesContainer>
-        <ButtonDetalhes
-          onClick={() => {
-            goToPokeDetail(navigate);
-          }}
-        >
-          {" "}
-          <u>Detalhes</u>{" "}
+        <ButtonDetalhes onClick={goToPokeDetail}>
+          <u>Detalhes</u>
         </ButtonDetalhes>
       </div>
       <div>
         <ImagePokemon
-          src={props.pokemon.sprites.other["official-artwork"].front_default}
+          src={pokemon.sprites.other["official-artwork"].front_default}
           alt="fotinho"
         />
-        <ButtonCapturar>Capturar!</ButtonCapturar>
+        <ButtonCapturar onClick={() => addToPokedex(pokemon)}>Capturar!</ButtonCapturar>
       </div>
       <ImagePokebola src="../src/assets/pokebola.png" alt="pokeball" />
     </ContainerCard>

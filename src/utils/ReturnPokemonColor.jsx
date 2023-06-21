@@ -7,7 +7,7 @@ export const getColors = (type) => {
       case "dragon":
         return "#004170";
       case "electric":
-        return "#F5D764";
+        return "#d3b648";
       case "fairy":
         return "#EDAC98";
       case "fighting":
