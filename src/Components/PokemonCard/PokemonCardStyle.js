@@ -14,17 +14,11 @@ export const ContainerCard = styled.div`
 `
 export const TypesContainer = styled.div`
   margin-bottom: 52px;
+  display: flex;
+  gap: 0.5rem;
+  width: 5.6rem;
+  height: 1.9rem;
 `;
-
-export const PokemonType = styled.img`
-  max-width: 100px;
-  height: 32px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px dashed #ffffff;
-  margin-right: 8px;
-`;
-
 export const ImagePokemon = styled.img`
     position: absolute;
     top: -3.75rem;
@@ -62,6 +56,7 @@ export const NamePokemonCard = styled.h1`
     font-family: 'Inter';
     font-weight: 700;
     font-size: 2rem;
+    text-transform: capitalize;
 `
 export const ImagePokebolaLoading = styled.img`
   width: 50px;
