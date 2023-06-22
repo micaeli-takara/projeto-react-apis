@@ -11,19 +11,28 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 
 function PokemonsListPage() {
   const context = useContext(GlobalContext)
-  const {homePokemons, addToPokedex} = context
+  const {homePokemons, addToPokedex, pokedex} = context
+
+  const filteredPokelist = () =>
+  homePokemons.filter(
+    (pokemonInList) =>
+      !pokedex.find(
+        (pokemonInPokedex) => pokemonInList.name === pokemonInPokedex.name
+      )
+  );
+
   return (
     <>
       <ContainerHome>
         <TituloAllPokemons>Todos Pokémons</TituloAllPokemons>
         <ContainerListCard>
-          {homePokemons.map((pokes, index) => {
+          {filteredPokelist().map((pokemon, index) => {
             return (
               <PokemonCard
                 key={index}
-                pokemon={pokes}
+                pokemon={pokemon}
                 addToPokedex={addToPokedex}
-                cardColor={getColors(pokes.types[0].type.name)}
+                cardColor={getColors(pokemon.types[0].type.name)}
               />
             );
           })}

@@ -1,31 +1,14 @@
 import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../Components/Constants/BASE_URL";
-import {
-  ArticleDetailPokemon,
-  AsideMoves,
-  BoxMoves,
-  ContainerDetailCard,
-  ImagePokebolaDetail,
-  ImagemAnimada,
-  ImagemPokemonDetail,
-  NamePokemon,
-  PId,
-  PMoves,
-  SectionMovesInfo,
-  SectionPokemon,
-  SectionStatusPokemon,
-  TitleDetail,
-  TitleMoves,
-  TypesDetails,
-} from "./PokemonDetailPageStyle";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { getTypes } from "../../utils/ReturnPokemonType";
 import { getColors } from "../../utils/ReturnPokemonColor";
+import {  AnimatedImage, ArticleDetailPokemon, ContainerDetailCard, MoveText, MovesAside, MovesBox, MovesTitle, PokeballImageDetail, PokemonId, PokemonImageDetail, PokemonName, SectionMovesInfo,  SectionPokemon,  SectionStatusPokemon, TitleDetail, TypesContainer } from "./PokemonDetailPageStyle";
 
-function PokemonDetailPage({cardColor}) {
-  console.log(cardColor)
+
+function PokemonDetailPage() {
   const { id } = useParams();
   const [pokemon, setPokemon] = useState(null);
 
@@ -43,25 +26,33 @@ function PokemonDetailPage({cardColor}) {
   if (!pokemon) {
     return <div>Loading...</div>;
   }
- 
+
   const typePokemons = pokemon.types.map((type, index) => {
-    return <img key={index} src={getTypes(type.type.name)} alt="" />;
+    return (
+      <img
+        key={index}
+        src={getTypes(type.type.name)}
+        alt=""
+      />
+    );
   });
+
+  const formattedId = String(pokemon.id).padStart(2, "0");
 
   return (
     <>
       <ContainerDetailCard>
         <TitleDetail>Detalhes</TitleDetail>
-        <ArticleDetailPokemon cardColor={getColors(pokemon.types[0].type.name)}>
+        <ArticleDetailPokemon backgroundColor={getColors(pokemon.types[0].type.name)}>
           <SectionPokemon>
-            <ImagemAnimada
+            <AnimatedImage
               src={
                 pokemon.sprites.versions["generation-v"]["black-white"].animated
                   .front_default
               }
               alt="Frente"
             />
-            <ImagemAnimada
+            <AnimatedImage 
               src={
                 pokemon.sprites.versions["generation-v"]["black-white"].animated
                   .back_default
@@ -70,27 +61,27 @@ function PokemonDetailPage({cardColor}) {
             />
           </SectionPokemon>
           <SectionStatusPokemon>
-            <TitleMoves>Base stats:</TitleMoves>
+            <MovesTitle>Base stats:</MovesTitle >
           </SectionStatusPokemon>
           <SectionMovesInfo>
-            <PId>{`#0${pokemon.id}`}</PId>
-            <NamePokemon>{pokemon.name}</NamePokemon>
-            <TypesDetails>{typePokemons}</TypesDetails>
-            <BoxMoves>
-              <TitleMoves>Moves:</TitleMoves>
-              <AsideMoves>
-                <PMoves>{pokemon.moves[0].move.name}</PMoves>
-                <PMoves>{pokemon.moves[1].move.name}</PMoves>
-                <PMoves>{pokemon.moves[2].move.name}</PMoves>
-                <PMoves>{pokemon.moves[3].move.name}</PMoves>
-              </AsideMoves>
-            </BoxMoves>
-          </SectionMovesInfo>
-          <ImagemPokemonDetail
+            <PokemonId >{`#${formattedId}`}</PokemonId>
+            <PokemonName>{pokemon.name}</PokemonName>
+            <TypesContainer>{typePokemons}</TypesContainer >
+            <MovesBox>
+              <MovesTitle>Moves:</MovesTitle >
+              <MovesAside>
+                <MoveText>{pokemon.moves[0].move.name}</MoveText >
+                <MoveText >{pokemon.moves[1].move.name}</MoveText >
+                <MoveText >{pokemon.moves[2].move.name}</MoveText >
+                <MoveText >{pokemon.moves[3].move.name}</MoveText >
+              </MovesAside>
+            </MovesBox >
+          </SectionMovesInfo >
+          <PokemonImageDetail
             src={pokemon.sprites.other["official-artwork"].front_default}
             alt="Bulbasaur"
           />
-          <ImagePokebolaDetail
+          <PokeballImageDetail
             src="../src/assets/pokebolacarddetalhe.png"
             alt="pokebolacarddetalhe"
           />

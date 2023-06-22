@@ -32,7 +32,6 @@ export const ButtonAllPokemons = styled.a`
     height: 2.25rem;
     left: 5rem;
     top: 3.8rem;
-
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
