@@ -9,8 +9,8 @@ import PokemonCard from "../../Components/PokemonCard/PokemonCard";
 import { getColors } from "../../utils/ReturnPokemonColor";
 
 function PokedexPage() {
-  const context = useContext(GlobalContext);
-  const { pokedex, removeFromPokedex } = context;
+  const { pokedex } = useContext(GlobalContext);
+
   return (
     <ContainerHome>
       <TituloAllPokemons>Meus Pokemons</TituloAllPokemons>
@@ -19,7 +19,6 @@ function PokedexPage() {
           <PokemonCard
             key={pokemon.id}
             pokemon={pokemon}
-            removeFromPokedex={removeFromPokedex}
             cardColor={getColors(pokemon.types[0].type.name)}
           />
         ))}

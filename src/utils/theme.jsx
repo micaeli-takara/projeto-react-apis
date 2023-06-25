@@ -22,3 +22,4 @@ export const colors = {
     medium: '1rem',
     large: '2rem',
   };
+  

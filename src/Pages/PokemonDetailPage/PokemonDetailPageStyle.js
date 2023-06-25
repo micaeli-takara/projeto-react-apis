@@ -22,29 +22,37 @@ export const ArticleDetailPokemon = styled.article`
   height: 42rem;
   border-radius: ${borderRadius.large};
   display: flex;
-  padding: ${spacing.medium};
+  padding: ${spacing.large};
 `;
 
 export const SectionPokemon = styled.section`
   display: flex;
   flex-direction: column;
-  gap: ${spacing.large};
+  gap: 2.94rem;
   margin-left: ${spacing.medium};
 `;
 
-export const AnimatedImage = styled.img`
+export const AnimatedImageBox = styled.div`
+  width: 17.625rem;
+  height: 17.625rem;
   background: ${colors.white};
-  padding: 7.8rem;
   border-radius: ${borderRadius.small};
+  justify-content: center;
+  align-items: center;
+  display: flex;
 `;
+
+export const AnimatedImage = styled.img`
+  width: 6rem;
+`
 
 export const SectionStatusPokemon = styled.div`
   background: ${colors.white};
   margin-left: ${spacing.large};
   padding: ${spacing.medium};
-  width: 21.4rem;
-  height: 38.5rem;
-  border-radius: ${borderRadius.medium};
+  width: 21.4375rem;
+  height: 38.3125rem;
+  border-radius: ${borderRadius.small};
   z-index: 1;
 `;
 
@@ -57,6 +65,8 @@ export const PokeballImageDetail = styled.img`
 export const SectionMovesInfo = styled.section`
   z-index: 1;
   margin-left: ${spacing.large};
+  display: flex;
+  flex-direction: column;
 `;
 
 export const PokemonId = styled.p`
@@ -77,7 +87,7 @@ export const PokemonName = styled.h1`
 export const MovesBox = styled.div`
   background: ${colors.white};
   width: 18.25rem;
-  height: 27.6rem;
+  height: 28.3125rem;
   margin-top: ${spacing.large};
   padding: ${spacing.medium};
   border-radius: ${borderRadius.small};
@@ -121,3 +131,4 @@ export const TypesContainer = styled.div`
   display: flex;
   gap: ${spacing.medium};
 `;
+
