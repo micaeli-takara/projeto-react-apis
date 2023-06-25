@@ -19,3 +19,35 @@ export const ContainerListCard = styled.article`
     flex-wrap: wrap;
     margin: 0.4rem;
 `
+
+export const StyledButton = styled.button`
+  background-color: #f44336;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #d32f2f;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+`;
+
+// Create a wrapper component to contain the buttons
+export const ButtonWrapper = styled.div`
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+`;
+
+export const Temporario = styled.div`
+    display: flex;
+`

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { colors, fonts, spacing, borderRadius } from "../../utils/Theme";
 
-
 export const ContainerCard = styled.div`
   padding: ${spacing.medium};
   width: 27rem;
@@ -13,6 +12,21 @@ export const ContainerCard = styled.div`
   margin-left: ${spacing.small};
   margin-bottom: 3.3rem;
   background-color: ${(props) => props.color};
+`;
+
+export const PokemonId = styled.p`
+  color: ${colors.white};
+  font-family: ${fonts.secondary};
+  font-weight: 700;
+  font-size: 1rem;
+`;
+
+export const PokemonName = styled.h1`
+  color: ${colors.white};
+  font-family: ${fonts.secondary};
+  font-weight: 700;
+  font-size: 2rem;
+  text-transform: capitalize;
 `;
 
 export const TypesContainer = styled.div`
@@ -77,14 +91,6 @@ export const ImagePokeball = styled.img`
   right: 0;
 `;
 
-export const PokemonName = styled.h1`
-  color: ${colors.white};
-  font-family: ${fonts.secondary};
-  font-weight: 700;
-  font-size: 2rem;
-  text-transform: capitalize;
-`;
-
 export const ImagePokeballLoading = styled.img`
   width: 50px;
   border-radius: 50%;
@@ -95,11 +101,4 @@ export const ImagePokeballLoading = styled.img`
       transform: rotate(1turn);
     }
   }
-`;
-
-export const PokemonId = styled.p`
-    color: ${colors.white};
-    font-family: ${fonts.secondary};
-    font-weight: 700;
-    font-size: 1rem;
 `;

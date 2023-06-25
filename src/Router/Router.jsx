@@ -7,11 +7,10 @@ import Header from '../Components/Header/Header';
 function Router() {
   return (
     <BrowserRouter>
-    <Header/>
       <Routes>
-        <Route index="/" element={<PokemonsListPage />} />
-        <Route path="/pokedex" element={ <PokedexPage />} />
-        <Route path="/detalhes/:id" element={ <PokemonDetailPage />} />
+        <Route index="/" element={<><Header /><PokemonsListPage /></>} />
+        <Route path="/pokedex" element={<><Header /><PokedexPage /></>}  />
+        <Route path="/detalhes/:id" element={<><Header /><PokemonDetailPage /></>}  />
       </Routes>
     </BrowserRouter>
   );
