@@ -16,16 +16,14 @@ import {
 import { useState } from "react";
 import {
   Modal,
-  ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalBody,
   ModalFooter,
   Button,
   useDisclosure,
-  Heading,
   Text,
 } from "@chakra-ui/react";
+import { pokebola } from "../src/assets/others/pokebola.png";
 
 function PokemonCard({ pokemon, cardColor }) {
   const { adicionarAoPokedex, removerDaPokedex, setPokemon } =
@@ -97,7 +95,7 @@ function PokemonCard({ pokemon, cardColor }) {
           />
           <div>{renderButton()}</div>
         </div>
-        <ImagePokeball src="../src/assets/others/pokebola.png" alt="pokeball" />
+        <ImagePokeball src={pokebola} alt="pokeball" />
       </ContainerCard>
 
       <Modal isOpen={aberto} onClose={onClose} size="md">

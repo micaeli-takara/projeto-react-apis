@@ -9,6 +9,7 @@ import {
 } from "./HeaderStyle";
 import { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import { logo } from "../src/assets/others/logo.png";
 
 function Header() {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ function Header() {
     return (
       <Nav>
         <div>
-          <img src="../src/assets/others/logo.png" alt="logo" />
+          <img src={logo} alt="logo" />
         </div>
         <ButtonPokedex onClick={() => goToPokeDex(navigate)}>
           Pokédex ({pokedex.length})
@@ -43,7 +44,7 @@ function Header() {
           <u>Todos Pokémons</u>
         </ButtonAllPokemons>
         <div>
-          <img src="../src/assets/others/logo.png" alt="logo" />
+          <img src={logo} alt="logo" />
         </div>
       </Nav>
     );
@@ -55,7 +56,7 @@ function Header() {
           <b>Todos Pokémons</b>
         </ButtonAllPokemons>
         <div>
-          <img src="../src/assets/others/logo.png" alt="logo" />
+          <img src={logo} alt="logo" />
         </div>
         {pokemon.capturado ? (
           <ButtonDeletePokemon onClick={() => removerPokemon(pokemon)}>
