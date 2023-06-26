@@ -14,6 +14,6 @@ function App() {
       </GlobalStates>
     </>
   );
-}
+};
 
 export default App;
