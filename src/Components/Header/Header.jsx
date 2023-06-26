@@ -5,6 +5,7 @@ import {
   Nav,
   ButtonAllPokemons,
   ButtonDeletePokemon,
+  ButtonCapturePokemon,
 } from "./HeaderStyle";
 import { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
@@ -12,17 +13,16 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 function Header() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { pokemon, adicionarAoPokedex, removerDaPokedex, pokedex  } =
+  const { pokemon, adicionarAoPokedex, removerDaPokedex, pokedex } =
     useContext(GlobalContext);
 
   const adicionarPokemon = (pokemon) => {
-      adicionarAoPokedex(pokemon);
+    adicionarAoPokedex(pokemon);
   };
 
   const removerPokemon = (pokemon) => {
-      removerDaPokedex(pokemon);
+    removerDaPokedex(pokemon);
   };
-
 
   if (location.pathname == "/") {
     return (
@@ -31,7 +31,7 @@ function Header() {
           <img src="../src/assets/logo.png" alt="logo" />
         </div>
         <ButtonPokedex onClick={() => goToPokeDex(navigate)}>
-          Pokédex ({pokedex.length})  
+          Pokédex ({pokedex.length})
         </ButtonPokedex>
       </Nav>
     );
@@ -57,15 +57,14 @@ function Header() {
         <div>
           <img src="../src/assets/logo.png" alt="logo" />
         </div>
-        {console.log(pokemon.capturado)}
         {pokemon.capturado ? (
-          <ButtonDeletePokemon onClick={() => adicionarPokemon(pokemon)}>
-            Adicionar na Pokédex
-          </ButtonDeletePokemon>
-        ) : (
           <ButtonDeletePokemon onClick={() => removerPokemon(pokemon)}>
             Excluir da Pokédex
           </ButtonDeletePokemon>
+        ) : (
+          <ButtonCapturePokemon onClick={() => adicionarPokemon(pokemon)}>
+            Adicionar na Pokédex
+          </ButtonCapturePokemon>
         )}
       </Nav>
     );

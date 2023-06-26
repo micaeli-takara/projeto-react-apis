@@ -28,19 +28,7 @@ import { Flex, Text, Divider, Progress } from "@chakra-ui/react";
 import { GlobalContext } from "../../contexts/GlobalContext";
 
 function PokemonDetailPage() {
-  const { id } = useParams();
-  const { pokemon, setPokemon } = useContext(GlobalContext);
-
-  useEffect(() => {
-    axios
-      .get(`${BASE_URL}${id}`)
-      .then((response) => {
-        setPokemon(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id]);
+  const { pokemon } = useContext(GlobalContext);
 
   if (!pokemon) {
     return <div>Loading...</div>;
@@ -73,6 +61,11 @@ function PokemonDetailPage() {
 
     return capitalizedStr;
   }
+
+  //   <PokeballImageDetail
+  //   src="../src/assets/pokebolacarddetalhe.png"
+  //   alt="pokebolacarddetalhe"
+  // />
 
   const renderStats = pokemon.stats.map((stat, index) => {
     let statColor = "yellow"; // Cor padrão para valores maiores que 50
@@ -112,69 +105,61 @@ function PokemonDetailPage() {
   });
 
   return (
-    <>
-      <ContainerDetailCard>
-        <TitleDetail>Detalhes</TitleDetail>
-        <ArticleDetailPokemon
-          backgroundColor={getColors(pokemon.types[0].type.name)}
-        >
-          <SectionPokemon>
-            <AnimatedImageBox>
-              <AnimatedImage
-                src={
-                  pokemon.sprites.versions["generation-v"]["black-white"]
-                    .animated.front_default
-                }
-                alt="Frente"
-              />
-            </AnimatedImageBox>
-            <AnimatedImageBox>
-              <AnimatedImage
-                src={
-                  pokemon.sprites.versions["generation-v"]["black-white"]
-                    .animated.back_default
-                }
-                alt="Verso"
-              />
-            </AnimatedImageBox>
-          </SectionPokemon>
-          <SectionStatusPokemon>
-            <MovesTitle>Base stats:</MovesTitle>
-            <Divider my={1} borderColor="gray.200" />
-            {renderStats}
-            <Text pl={8} display="flex" gap="15px" fontWeight="bold"></Text>
-            <Text color="gray.500">Total</Text>
-
-            <Text fontWeight="extrabold">{totalStats}</Text>
-            <Divider my={1} borderColor="gray.200" />
-          </SectionStatusPokemon>
-          <SectionMovesInfo>
-            <div>
-              <PokemonId>{`#${formattedId}`}</PokemonId>
-              <PokemonName>{pokemon.name}</PokemonName>
-              <TypesContainer>{typePokemons}</TypesContainer>
-            </div>
-            <MovesBox>
-              <MovesTitle>Moves:</MovesTitle>
-              <MovesAside>
-                <MoveText>{pokemon.moves[0].move.name}</MoveText>
-                <MoveText>{pokemon.moves[1].move.name}</MoveText>
-                <MoveText>{pokemon.moves[2].move.name}</MoveText>
-                <MoveText>{pokemon.moves[3].move.name}</MoveText>
-              </MovesAside>
-            </MovesBox>
-            <PokemonImageDetail
-              src={pokemon.sprites.other["official-artwork"].front_default}
-              alt="Bulbasaur"
+    <ContainerDetailCard>
+      <TitleDetail>Detalhes</TitleDetail>
+      <ArticleDetailPokemon backgroundColor={getColors(pokemon.types[0].type.name)} >
+        <SectionPokemon>
+          <AnimatedImageBox>
+            <AnimatedImage
+              src={
+                pokemon.sprites.versions["generation-v"]["black-white"].animated
+                  .front_default
+              }
+              alt="Frente"
             />
-          </SectionMovesInfo>
-          <PokeballImageDetail
-            src="../src/assets/pokebolacarddetalhe.png"
-            alt="pokebolacarddetalhe"
+          </AnimatedImageBox>
+          <AnimatedImageBox>
+            <AnimatedImage
+              src={
+                pokemon.sprites.versions["generation-v"]["black-white"].animated
+                  .back_default
+              }
+              alt="Verso"
+            />
+          </AnimatedImageBox>
+        </SectionPokemon>
+        <SectionStatusPokemon>
+          <MovesTitle>Base stats:</MovesTitle>
+          <Divider my={1} borderColor="gray.200" />
+          {renderStats}
+          <Text pl={8} display="flex" gap="15px" fontWeight="bold">
+            <Text color="gray.500">Total</Text>
+            <Text fontWeight="extrabold">{totalStats}</Text>
+          </Text>
+          <Divider my={1} borderColor="gray.200" />
+        </SectionStatusPokemon>
+        <SectionMovesInfo>
+          <div>
+            <PokemonId>{`#${formattedId}`}</PokemonId>
+            <PokemonName>{pokemon.name}</PokemonName>
+            <TypesContainer>{typePokemons}</TypesContainer>
+          </div>
+          <MovesBox>
+            <MovesTitle>Moves:</MovesTitle>
+            <MovesAside>
+              <MoveText>{pokemon.moves[0].move.name}</MoveText>
+              <MoveText>{pokemon.moves[1].move.name}</MoveText>
+              <MoveText>{pokemon.moves[2].move.name}</MoveText>
+              <MoveText>{pokemon.moves[3].move.name}</MoveText>
+            </MovesAside>
+          </MovesBox>
+          <PokemonImageDetail
+            src={pokemon.sprites.other["official-artwork"].front_default}
+            alt="Bulbasaur"
           />
-        </ArticleDetailPokemon>
-      </ContainerDetailCard>
-    </>
+        </SectionMovesInfo>
+      </ArticleDetailPokemon>
+    </ContainerDetailCard>
   );
 }
 
