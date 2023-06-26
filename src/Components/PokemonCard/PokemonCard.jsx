@@ -97,7 +97,7 @@ function PokemonCard({ pokemon, cardColor }) {
           />
           <div>{renderButton()}</div>
         </div>
-        <ImagePokeball src="../src/assets/pokebola.png" alt="pokeball" />
+        <ImagePokeball src="../src/assets/others/pokebola.png" alt="pokeball" />
       </ContainerCard>
 
       <Modal isOpen={aberto} onClose={onClose} size="md">
