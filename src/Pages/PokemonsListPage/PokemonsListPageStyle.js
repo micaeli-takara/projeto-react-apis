@@ -1,13 +1,12 @@
 import styled from "styled-components";
-import { colors, fonts } from "../../utils/Theme";
 
 export const ContainerHome = styled.div`
-    background-color: ${colors.primary};
+    background-color: #5d5d5d;
 `
 
 export const TituloAllPokemons = styled.h1`
-    color: ${colors.white};
-    font-family: ${fonts.primary};
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 3rem;
     line-height: 4.5rem;

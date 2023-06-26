@@ -1,38 +1,37 @@
 import styled from "styled-components";
-import { colors, fonts, spacing, borderRadius } from "../../utils/Theme";
 
 export const ContainerCard = styled.div`
-  padding: ${spacing.medium};
+  padding: 1rem;
   width: 27rem;
   height: 13rem;
-  border-radius: ${borderRadius.medium};
+  border-radius: 1rem;
   display: flex;
   position: relative;
-  color: ${colors.white};
-  margin-left: ${spacing.small};
+  color: #ffffff;
+  margin-left: 0.5rem;
   margin-bottom: 3.3rem;
   background-color: ${(props) => props.color};
 `;
 
 export const PokemonId = styled.p`
-  color: ${colors.white};
-  font-family: ${fonts.secondary};
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 1rem;
 `;
 
 export const PokemonName = styled.h1`
-  color: ${colors.white};
-  font-family: ${fonts.secondary};
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 2rem;
   text-transform: capitalize;
 `;
 
 export const TypesContainer = styled.div`
-  margin-bottom: ${spacing.large};
+  margin-bottom: 2rem;
   display: flex;
-  gap: ${spacing.small};
+  gap: 0.5rem;
   width: 5.6rem;
   height: 1.9rem;
 `;
@@ -48,40 +47,40 @@ export const ImagePokemon = styled.img`
 export const ButtonCapture = styled.button`
   width: 9.12rem;
   height: 2.3rem;
-  background: ${colors.white};
-  border-radius: ${borderRadius.small};
+  background: #ffffff;
+  border-radius: 0.5rem;
   border: none;
   cursor: pointer;
   position: absolute;
   bottom: 0.7rem;
   right: 1.3rem;
   z-index: 2;
-  color: ${colors.primary};
+  color: #5d5d5d;
   font-size: 1rem;
-  font-family: ${fonts.primary};
+  font-family: 'Poppins', sans-serif;
 `;
 
 export const ButtonDelete = styled.button`
   width: 9.12rem;
   height: 2.3rem;
-  background: ${colors.red};
-  border-radius: ${borderRadius.small};
+  background: #FF6262;
+  border-radius: 0.5rem;
   border: none;
   cursor: pointer;
   position: absolute;
   bottom: 0.7rem;
   right: 1.3rem;
   z-index: 2;
-  color: ${colors.white};
+  color: #ffffff;
   font-size: 1rem;
-  font-family: ${fonts.primary};
+  font-family: 'Poppins', sans-serif;
 `;
 
 export const ButtonDetails = styled.a`
-  font-family: ${fonts.primary};
+  font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 700;
-  color: ${colors.white};
+  color: #ffffff;
   cursor: pointer;
 `;
 
