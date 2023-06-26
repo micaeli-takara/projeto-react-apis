@@ -26,23 +26,29 @@ function PokemonsListPage() {
     mostrarMaisPokemons,
     mostrarMenosPokemons,
     currentPage,
-    homePokemons, isFetching
+    homePokemons,
+    isFetching,
   } = useContext(GlobalContext);
-  
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [modalMessage, setModalMessage] = useState("");
+  const [enableButton, setEnableButton] = useState(true);
 
   const handleClickMostrarMenos = () => {
-    setModalMessage("Essa é uma mensagem divertida ao clicar em Mostrar Menos!");
+    setModalMessage("20 pokémons foram retirados da sua Home");
     onOpen();
     mostrarMenosPokemons();
+    if (homePokemons.length == 40){
+      setEnableButton(true);
+    }
+    
   };
 
   const handleClickMostrarMais = () => {
-    setModalMessage("Essa é uma mensagem divertida ao clicar em Mostrar Mais!");
+    setModalMessage("20 pokémons foram adicionados a sua Home");
     onOpen();
     mostrarMaisPokemons();
+    setEnableButton(false);
   };
 
   return (
@@ -51,7 +57,7 @@ function PokemonsListPage() {
         <ButtonWrapper>
           <StyledButton
             onClick={handleClickMostrarMenos}
-            disabled={currentPage === 1 || isFetching}
+            disabled={enableButton}
             grayedOut={currentPage === 1 || isFetching}
           >
             Mostrar Menos
@@ -66,18 +72,18 @@ function PokemonsListPage() {
         </ButtonWrapper>
         <TituloAllPokemons>Todos Pokémons</TituloAllPokemons>
         <ContainerListCard>
-          {homePokemons.map( (pkmn, idx) => {
-            return !pkmn.cancelado ?
-            <PokemonCard
-              key={idx}
-              pokemon={pkmn}
-              adicionarAoPokedex={adicionarAoPokedex}
-              cardColor={getColors(pkmn.types[0].type.name)}
-            />
-            :
-            false
-          }
-          )}
+          {homePokemons.map((pkmn, idx) => {
+            return !pkmn.cancelado ? (
+              <PokemonCard
+                key={idx}
+                pokemon={pkmn}
+                adicionarAoPokedex={adicionarAoPokedex}
+                cardColor={getColors(pkmn.types[0].type.name)}
+              />
+            ) : (
+              false
+            );
+          })}
         </ContainerListCard>
       </ContainerHome>
 

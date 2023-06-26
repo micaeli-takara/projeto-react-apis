@@ -46,19 +46,17 @@ export const GlobalStates = (props) => {
   };
 
   const mostrarMenosPokemons = () => {
-    const quantidadeExibida = (currentPage - 1) * 20;
-    const pokemonsExibidos = homePokemons.slice(0, quantidadeExibida);
+    const pokemonsExibidos = homePokemons.slice(0,homePokemons.length - 20);
     setHomePokemons(pokemonsExibidos);
-    setCurrentPage((prevPage) => prevPage - 1);
   };
 
   const adicionarAoPokedex = (pokemonAdicionar) => {
-    const pokemonAtualizado = { ...pokemonAdicionar, capturado: true }; // Cria uma cópia do objeto pokemonAdicionar e define a propriedade capturado como true
-    const novaPokedex = [...pokedex, pokemonAtualizado]; // Adiciona o pokémon capturado à Pokédex
+    pokemonAdicionar.capturado = true;
+    const novaPokedex = [...pokedex, pokemonAdicionar]; // Adiciona o pokémon capturado à Pokédex
     setPokedex(novaPokedex); // Atualiza a Pokédex
     const updatedHomePokemons = homePokemons.map((pokemon) =>
       pokemon.id === pokemonAdicionar.id
-        ? pokemonAtualizado : pokemon
+        ? pokemonAdicionar : pokemon
     ); // Atualiza a propriedade "capturado" do pokémon na lista de pokémons exibidos na página inicial
     const filteredPokemoms = updatedHomePokemons.filter(
       (pkmn) => !pkmn.capturado
@@ -71,7 +69,9 @@ export const GlobalStates = (props) => {
       (pokemonNaPokedex) => pokemonNaPokedex.id !== pokemonRemover.id
     ); // Remove o pokémon da Pokédex
     setPokedex(novaPokedex); // Atualiza a Pokédex
-    const novoHome = [...homePokemons, { ...pokemonRemover, capturado: false }];
+    let pokemonNovoRemovido = pokemonRemover
+    pokemonNovoRemovido.capturado = false
+    const novoHome = [...homePokemons, pokemonNovoRemovido];
     novoHome.sort((a, b) => a.id - b.id); // Adiciona o pokémon novamente à lista de pokémons exibidos na página inicial e ordena por ID
     setHomePokemons(novoHome); // Atualiza a lista de pokémons exibidos na página inicial
   };

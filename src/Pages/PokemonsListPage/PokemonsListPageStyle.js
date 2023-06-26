@@ -43,9 +43,9 @@ export const StyledButton = styled.button`
 
 // Create a wrapper component to contain the buttons
 export const ButtonWrapper = styled.div`
-  margin-top: 20px;
+  padding: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 `;
 
 export const Temporario = styled.div`

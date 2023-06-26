@@ -10,7 +10,7 @@ export const Nav = styled.header`
   align-items: center;
   padding: 1.3rem;
   
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 975px) {
     flex-direction: column;
     height: auto;
     padding: 1rem;
@@ -34,7 +34,7 @@ export const ButtonPokedex = styled.button`
   background: #33A4F5;
   border-radius: 0.5rem;
   
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 975px) {
     position: static;
     width: 100%;
     margin-top: 1rem;
@@ -52,16 +52,16 @@ export const ButtonAllPokemons = styled.a`
   font-size: 1.5rem;
   cursor: pointer;
   
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 975px) {
     position: static;
     margin-top: 1rem;
   }
 `;
 
 export const ButtonDeletePokemon = styled.button`
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 1.5rem;
+  color: #FFF;
+  font-size: 1rem;
+  font-family: Poppins;
   cursor: pointer;
 
   position: absolute;
@@ -72,13 +72,36 @@ export const ButtonDeletePokemon = styled.button`
 
   border: none;
   color: #FFFFFF;
-  background: #33A4F5;
-  border-radius: 0.5rem;
+  border-radius: 8px;
+  background: #FF6262;
   
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 975px) {
     position: static;
     width: 100%;
     margin-top: 1rem;
+  }
+`;
 
+export const ButtonCapturePokemon = styled.button`
+  color: #FFF;
+  font-size: 1rem;
+  font-family: Poppins;
+  cursor: pointer;
+
+  position: absolute;
+  width: 17.9rem;
+  height: 4.6rem;
+  right: 2.5rem;
+  top: 3rem;
+
+  border: none;
+  color: #FFFFFF;
+  border-radius: 8px;
+  background: #33A4F5;
+  
+  @media screen and (max-width: 975px) {
+    position: static;
+    width: 100%;
+    margin-top: 1rem;
   }
 `;

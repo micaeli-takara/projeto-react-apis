@@ -44,7 +44,7 @@ export const AnimatedImageBox = styled.div`
 
 export const AnimatedImage = styled.img`
   width: 6rem;
-`
+`;
 
 export const SectionStatusPokemon = styled.div`
   background: ${colors.white};
@@ -131,4 +131,3 @@ export const TypesContainer = styled.div`
   display: flex;
   gap: ${spacing.medium};
 `;
-

@@ -19,41 +19,41 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
+  ModalFooter,
   Button,
   useDisclosure,
+  Heading,
+  Text,
 } from "@chakra-ui/react";
 
 function PokemonCard({ pokemon, cardColor }) {
-  const { adicionarAoPokedex, removerDaPokedex, setPokemon } = useContext(
-    GlobalContext
-  );
+  const { adicionarAoPokedex, removerDaPokedex, setPokemon } =
+    useContext(GlobalContext);
 
   const location = useLocation();
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [modalMessage, setModalMessage] = useState("");
   const [modalTitle, setModalTitle] = useState("");
-  const [aberto, setAberto] = useState(false);  
-  
+  const [aberto, setAberto] = useState(false);
+
   const handleDelete = () => {
-    setModalTitle("Oh No!");
-    setModalMessage(`${pokemon.name} removido da Pokédex com sucesso!`);
+    setModalTitle(`Oh No!`);
+    setModalMessage(`Pokémon removido da Pokédex com sucesso!`);
     setAberto(true);
     setTimeout(() => {
-      removerDaPokedex(pokemon);  
+      removerDaPokedex(pokemon);
     }, 1000);
   };
 
   const handleCapture = () => {
-    setModalTitle("Pokemon Captured");
-    setModalMessage(`Parabéns! Você capturou o Pokémon ${pokemon.name}!`);
+    setModalTitle(`Gotcha!`);
+    setModalMessage(`O Pokémon foi adicionado a sua Pokédex`);
     setAberto(true);
-    //onOpen();
     setTimeout(() => {
       adicionarAoPokedex(pokemon);
-    }, 1000); 
+    }, 1000);
   };
 
   const goToPokeDetail = () => {
@@ -100,16 +100,33 @@ function PokemonCard({ pokemon, cardColor }) {
         <ImagePokeball src="../src/assets/pokebola.png" alt="pokeball" />
       </ContainerCard>
 
-      
-      <Modal isOpen={aberto} onClose={(onClose)}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>{modalTitle}</ModalHeader>
-          <ModalBody>
-            <p>{modalMessage}</p>
-          </ModalBody>
+      <Modal isOpen={aberto} onClose={onClose} size="md">
+        <ModalContent
+          width="28rem"
+          height="13rem"
+          borderRadius="12px"
+          background="#FFF"
+        >
+          <ModalHeader
+            fontFamily="Poppins"
+            fontSize="48px"
+            fontWeight="700"
+            textAlign="center"
+          >
+            {modalTitle}
+          </ModalHeader>
+          <Text
+            fontFamily="Poppins"
+            fontSize="16px"
+            fontWeight="700"
+            textAlign="center"
+          >
+            {modalMessage}
+
+          </Text>
+
           <ModalFooter>
-          <Button colorScheme="blue" onClick={() => setAberto(false)}>
+            <Button colorScheme="blue" onClick={() => setAberto(false)}>
               Fechar
             </Button>
           </ModalFooter>
