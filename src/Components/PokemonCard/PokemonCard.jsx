@@ -23,7 +23,7 @@ import {
   useDisclosure,
   Text,
 } from "@chakra-ui/react";
-import { pokebola } from "../../assets/others/pokebola.png";
+import  pokebola  from "../../assets/others/pokebola.png";
 
 function PokemonCard({ pokemon, cardColor }) {
   const { adicionarAoPokedex, removerDaPokedex, setPokemon } =

@@ -9,7 +9,7 @@ import {
 } from "./HeaderStyle";
 import { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
-import { logo } from "../../assets/others/logo.png";
+import  logo  from "../../assets/others/logo.png";
 
 function Header() {
   const navigate = useNavigate();
