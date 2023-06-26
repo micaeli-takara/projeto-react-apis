@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const ContainerHome = styled.div`
     background-color: #5d5d5d;
-`
-
+`;
 export const TituloAllPokemons = styled.h1`
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
