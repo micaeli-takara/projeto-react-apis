@@ -61,12 +61,7 @@ function PokemonDetailPage() {
 
     return capitalizedStr;
   }
-
-  //   <PokeballImageDetail
-  //   src="../src/assets/pokebolacarddetalhe.png"
-  //   alt="pokebolacarddetalhe"
-  // />
-
+  
   const renderStats = pokemon.stats.map((stat, index) => {
     let statColor = "yellow"; // Cor padrão para valores maiores que 50
 
